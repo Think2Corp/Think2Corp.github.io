@@ -1,121 +1,40 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-
-<script defer src="https://cloud.umami.is/script.js" data-website-id="8c88412c-a7d5-42f3-9644-f84e1b0c9b8a"></script>
-  <meta charset="UTF-8" />
-  <title>Think2 - Coming soon !</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Think2 - Coming soon!</title>
   <style>
     body {
       height: 100vh;
-      display: grid;
-	  place-items: center;
-      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #030620;
+      color: #f2eb0a;
       font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    #container {
+      text-align: center;
     }
 
     #logo {
-      position: flex;
-      top: 20px;
-      left: 20px;
-      font-size: 4rem;     /* Ajustez si besoin */
+      font-size: 4rem;
       font-weight: bold;
     }
 
-    .flip-container {
-      display: inline-block;
-      width: 3em;          /* ← augmentée pour loger “twice” */
-      height: 1.1em;       /* Ajustez si besoin pour la hauteur */
-      position: relative;
-      perspective: 600px;
-      margin-left: 1px;
-    }
-
-    .flip-face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      line-height: 1.1em;
-      text-align: center;
-      backface-visibility: hidden;
-      border: 2px solid #333;
-      border-radius: 6px;
-      background: #333;
-      color: #fff;
-      font-weight: bold;
-      transform-origin: bottom;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .front {
-      transform: rotateX(0deg);
-      z-index: 2;
-    }
-
-    .back {
-      transform: rotateX(180deg);
-    }
-
-    /* Animations */
-    .flip-animate .front {
-      animation: flipFront 0.6s forwards;
-    }
-    .flip-animate .back {
-      animation: flipBack 0.6s forwards;
-    }
-
-    @keyframes flipFront {
-      0% {
-        transform: rotateX(0deg);
-      }
-      100% {
-        transform: rotateX(-180deg);
-      }
-    }
-
-    @keyframes flipBack {
-      0% {
-        transform: rotateX(180deg);
-      }
-      100% {
-        transform: rotateX(0deg);
-      }
+    #text {
+      font-size: 1.5rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-
-  <div id="logo">Think<div class="flip-container" id="flip-container">
-      <div class="flip-face front" id="front-face">2</div>
-      <div class="flip-face back" id="back-face"></div>
-    </div>
-     coming soon !
+  <div id="container">
+    <img id="logo" src="v1-yellow-bottom.svg" alt="Think2 Logo">
+    <div id="text">Coming soon !</div>
   </div>
-
-  <script>
-    const textes = ["2", "Twice", "²", "Too", "2", "To", "Two"];
-    let currentIndex = 0;
-
-    const flipContainer = document.getElementById('flip-container');
-    const frontFace      = document.getElementById('front-face');
-    const backFace       = document.getElementById('back-face');
-
-    function flipToNext() {
-      let nextIndex = (currentIndex + 1) % textes.length;
-      let nextText  = textes[nextIndex];
-      backFace.textContent = nextText;
-      flipContainer.classList.add('flip-animate');
-
-      setTimeout(() => {
-        frontFace.textContent = nextText;
-        flipContainer.classList.remove('flip-animate');
-        currentIndex = nextIndex;
-      }, 600);
-    }
-
-    setInterval(flipToNext, 1000);
-  </script>
 </body>
 </html>
